@@ -20,12 +20,12 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="assets/img/brands/error-icon-25260.png" width="65" height="65"></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html"><strong>Strona główna</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html"><strong>Dodaj zgłoszenie</strong></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php"><strong>Strona główna</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="reporting.php"><strong>Dodaj zgłoszenie</strong></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.html"><strong>Autorzy</strong></a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Logowanie</a>
+                    <li class="nav-item"><a class="nav-link" href="contacts.php"><strong>Autorzy</strong></a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="signup.php">Logowanie</a>
             </div>
         </div>
     </nav>

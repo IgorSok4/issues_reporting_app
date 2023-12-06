@@ -32,7 +32,7 @@
                                 <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
                                 <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Hasło"></div>
                                 <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Zaloguj się</button></div>
-                                <p class="text-muted">Utwórz nowe konto</p>
+                                <a class="text-muted" href="register.php">Utwórz nowe konto</a>
                             </form>
                         </div>
                     </div>

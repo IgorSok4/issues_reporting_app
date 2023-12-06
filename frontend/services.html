@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Services - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens---Create-Edit-Form.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="assets/img/brands/error-icon-25260.png" width="65" height="65"></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><strong>Strona główna</strong></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html"><strong>Dodaj zgłoszenie</strong></a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html"><strong>Autorzy</strong></a></li>
+                </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Logowanie</a>
+            </div>
+        </div>
+    </nav>
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mb-4 mb-lg-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <p class="fw-bold text-success mb-2">Dodaj nowe zgłoszenie</p>
+                    <h3 class="fw-bold">Wypełnij poniższy formularz w celu zgłoszenia nieprawidłowości</h3>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
+            <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
+            <form>
+                <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
+                    <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
+                        <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Wypełnij wymagane pola *</span></p>
+                    </div>
+                    <div class="card-body" style="background: #2d2c38;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8 col-lg-8">
+                                <div class="mb-3"><label class="form-label" for="service_name"><strong>Tytuł zgłoszenia *</strong></label><input class="form-control" type="text" id="service_name" placeholder="Ogólny opis zgłoszenia" name="service_name" required=""></div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="mb-3"><label class="form-label" for="service_price"><strong>Kategoria zgłoszenia*</strong></label><input class="form-control" type="text" id="service_price" placeholder="Wybierz z listy" name="client_phone" required=""></div>
+                            </div>
+                        </div>
+                        <div class="mb-3"><label class="form-label" for="client_description"><strong>Opis zgłoszenia*</strong></label><textarea class="form-control" id="service_description" rows="4" name="service_description" placeholder="Pełny opis zgłoszenia" required=""></textarea></div>
+                        <div class="mb-3"><label class="form-label" for="service_client_payment_validated"><strong>Zgłoszenie priorytetowe? *</strong></label>
+                            <div class="form-group mb-3">
+                                <div class="form-check"><input class="form-check-input" type="radio" id="service_client_payment_validated-1" name="RadioOption" required=""><label class="form-check-label" for="service_client_payment_validated-1">Tak</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" id="service_client_payment_validated-2" name="RadioOption" required=""><label class="form-check-label" for="service_client_payment_validated-2">Nie</label></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="service_client_start_date"><strong>Imię i nazwisko zgłaszającego *&nbsp;</strong></label><input class="form-control" id="service_client_start_date" type="" name="service_client_start_date" required=""></div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="service_client_end_date"><strong>Oddział *</strong></label><input class="form-control" id="service_client_end_date" type="" name="service_client_end_date" required=""></div>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div>
+                    </div>
+                </div>
+                <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Zapisz zgłoszenie</button></div>
+            </form>
+        </div>
+    </section>
+    <footer class="bg-dark">
+        <div class="container py-4 py-lg-5">
+            <hr>
+            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">Igor Sokół | Mikołaj Stach | Projekt PHP z MySQL</p>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"></li>
+                    <li class="list-inline-item"></li>
+                    <li class="list-inline-item"></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="assets/js/Ludens---Create-Edit-Form-Ludens---1-Index-Table-with-Search--Sort-Filters-v20-1.js"></script>
+    <script src="assets/js/Ludens---Create-Edit-Form-Ludens---1-Index-Table-with-Search--Sort-Filters-v20.js"></script>
+    <script src="assets/js/Ludens---Create-Edit-Form-Ludens---Sleek-Image-Input-with-Preview.js"></script>
+    <script src="assets/js/Ludens---Create-Edit-Form-theme.js"></script>
+</body>
+
+</html>

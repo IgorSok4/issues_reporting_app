@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+$current_page = basename($_SERVER['PHP_SELF']);
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    if ($current_page != 'signup.php' &&
+        $current_page != 'register.php' &&
+        $current_page != 'index.php' &&
+        $current_page != 'authors.php') {
+        header('Location: signup.php');
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -9,7 +23,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://   cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Ludens---Create-Edit-Form.css">
@@ -21,11 +35,17 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.php"><strong>Strona główna</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="reporting.php"><strong>Dodaj zgłoszenie</strong></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="reporting.php"><strong>Dodaj zgłoszenie</strong></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.php"><strong>Autorzy</strong></a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="signup.php">Logowanie</a>
+                    <li class="nav-item"><a class="nav-link active" href="authors.php"><strong>Autorzy</strong></a></li>
+                </ul>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
+                    <p  style="font-weight: bold;margin-bottom: 0px;!important">Hello <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                    <a class="btn btn-primary shadow m-lg-2" role="button" href="../backend/logout.php">Wyloguj się</a>
+                <?php else: ?>
+                    <a class="btn btn-primary shadow" role="button" href="signup.php">Logowanie</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

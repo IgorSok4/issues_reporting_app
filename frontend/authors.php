@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+
     <section class="py-5">
         <div class="container py-5">
             <div class="row mb-5">
@@ -39,7 +40,7 @@
                                 </svg></div>
                             <div class="px-2">
                                 <h6 class="fw-bold mb-0">Mikołaj Stach</h6>
-                                <p class="text-muted mb-0">-----</p>
+                                <p class="text-muted mb-0">156806</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center p-3">

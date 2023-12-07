@@ -4,7 +4,7 @@
             <div class="row pt-5">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto" style="margin-bottom: 63px;">
                     <div class="text-center">
-                        <p class="fw-bold text-success mb-2">Logowanie</p>
+                        <p class="fw-bold text-success mb-2">Rejestracja</p>
                         <h2 class="fw-bold"><strong><span style="background-color: rgb(41, 41, 41);">Projekt PHP z MySQL</span></strong><br><strong><span style="background-color: rgb(41, 41, 41);">System zgłaszania błędów</span></strong></h2>
                     </div>
                 </div>
@@ -28,9 +28,9 @@
                                     <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
                                     <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"></path>
                                 </svg></div>
-                            <form class="text-center" method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Hasło"></div>
+                            <form class="text-center" method="post" action="/reporting_system/backend/register.php">
+                                <div class="mb-3"><input class="form-control" type="text" name="login" placeholder="Login" required></div>
+                                <div class="mb-3"><input class="form-control" type="password" name="haslo" placeholder="Hasło" required></div>
                                 <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Zarejestruj się</button></div>
                                 <p class="text-muted"></p>
                             </form>

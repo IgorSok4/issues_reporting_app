@@ -1,4 +1,12 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == 'invalidpassword') {
+        echo '<p>Błędne hasło. Proszę spróbować ponownie.</p>';
+    } elseif ($_GET['error'] == 'nouser') {
+        echo '<p>Nie znaleziono użytkownika. Proszę spróbować ponownie.</p>';
+    }
+}
+?>
     <header class="bg-dark">
         <div class="container pt-4 pt-xl-5">
             <div class="row pt-5">
@@ -28,11 +36,11 @@
                                     <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
                                     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
                                 </svg></div>
-                            <form class="text-center" method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Hasło"></div>
+                            <form class="text-center" method="post" action="/issues_reporting_app/backend/authentication.php">
+                                <div class="mb-3"><input class="form-control" type="text" name="login" placeholder="Login"></div>
+                                <div class="mb-3"><input class="form-control" type="password" name="haslo" placeholder="Hasło"></div>
                                 <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Zaloguj się</button></div>
-                                <a class="text-muted" href="register.php">Utwórz nowe konto</a>
+                                <a class="text-muted" href="/issues_reporting_app/frontend/register.php">Utwórz nowe konto</a>
                             </form>
                         </div>
                     </div>

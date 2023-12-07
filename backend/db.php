@@ -1,6 +1,6 @@
 <?php
-$servername = 'localhost:8080';
-$username = 'root@localhost';
+$servername = 'localhost';
+$username = 'root';
 $password = '';
 $dbname = 'reporting_system';
 

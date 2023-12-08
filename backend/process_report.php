@@ -9,10 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imieNazwisko = mysqli_real_escape_string($conn, $_POST['imie_nazwisko']);
     $oddzial = mysqli_real_escape_string($conn, $_POST['oddzial']);
     $idKategorii = isset($_POST['id_kategorii']) ? (int)$_POST['id_kategorii'] : null;
+    $idUzytkownika = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO zgloszenia (tytul, opis, piorytet, imie_nazwisko, oddzial, id_kategorii) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO zgloszenia (tytul, opis, piorytet, imie_nazwisko, oddzial, id_kategorii, id_uzytkownika) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssissi", $tytul, $opis, $piorytet, $imieNazwisko, $oddzial, $idKategorii);
+    $stmt->bind_param("ssissii", $tytul, $opis, $piorytet, $imieNazwisko, $oddzial, $idKategorii, $idUzytkownika);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

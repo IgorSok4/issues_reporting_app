@@ -21,6 +21,7 @@ if ($result->num_rows == 1) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $uzytkownik['login'];
         $_SESSION['admin'] = $uzytkownik['rola'];
+        $_SESSION['user_id'] = $uzytkownik['ID'];
 
         header("Location: /issues_reporting_app/frontend/index.php");
         exit;

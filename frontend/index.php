@@ -21,7 +21,7 @@
     <section class="py-5">
         <div class="container text-center py-5">
             <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
-                <p class="mb-4" style="font-size: 1.6rem;">Dodaj nowe&nbsp;<a href="reporting.php" class="text-success"><strong>zgłoszenie</strong></a>&nbsp;</p>
+                <p class="mb-4" style="font-size: 1.6rem;">Dodaj nowe&nbsp;<a href="report.php" class="text-success"><strong>zgłoszenie</strong></a>&nbsp;</p>
             <?php else: ?>
             <p class="mb-4" style="font-size: 1.6rem;">
                 <a href="signup.php">Zaloguj się</a>, aby dodać nowe&nbsp;

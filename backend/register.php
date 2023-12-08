@@ -1,9 +1,13 @@
 <?php
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'db.php';
 
     $login = mysqli_real_escape_string($conn, $_POST['login']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $haslo = mysqli_real_escape_string($conn, $_POST['haslo']);
+    $rola = 0;
 
     $hasloHashed = password_hash($haslo, PASSWORD_DEFAULT);
 
@@ -13,14 +17,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        echo "Nazwa użytkownika jest już zajęta.";
+        $_SESSION['register_status'] = "Nazwa użytkownika jest już zajęta.";
     } else {
-        $sql = "INSERT INTO uzytkownicy (login, haslo) VALUES (?, ?)";
+        $sql = "INSERT INTO uzytkownicy (login, email, haslo, rola) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $login, $hasloHashed);
+        $stmt->bind_param("sssi", $login, $email, $hasloHashed, $rola);
         $stmt->execute();
-        echo "Rejestracja zakończona sukcesem!";
+        $_SESSION['register_status'] = "Rejestracja zakończona sukcesem!";
     }
     $conn->close();
+    header("Location: /issues_reporting_app/frontend/signup.php");
+    exit;
 }
+// komunikat o statusie rejestracji
+if (isset($_SESSION['register_status'])): ?>
+    <script>
+        alert('<?php echo $_SESSION['register_status']; ?>');
+    </script>
+    <?php
+        unset($_SESSION['register_status']);
+    endif;
 ?>

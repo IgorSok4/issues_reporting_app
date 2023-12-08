@@ -1,5 +1,5 @@
 <?php
-session_start(); // Upewnij się, że rozpoczynasz sesję na początku skryptu
+session_start();
 
 include 'db.php';
 

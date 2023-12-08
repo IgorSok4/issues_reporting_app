@@ -48,4 +48,12 @@ if (isset($_GET['error'])) {
             </div>
         </div>
     </section>
+<?php if (isset($_SESSION['register_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['register_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['register_status']);
+endif;
+?>
 <?php include 'footer.php'; ?>

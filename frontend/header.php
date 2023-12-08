@@ -35,17 +35,20 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.php"><strong>Strona główna</strong></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="reporting.php"><strong>Dodaj zgłoszenie</strong></a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link active" href="report.php"><strong>Dodaj zgłoszenie</strong></a></li>
                     <li class="nav-item"><a class="nav-link active" href="authors.php"><strong>Autorzy</strong></a></li>
-                </ul>
+                
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['admin'] == true): ?>
+                    <li class="nav-item"><a class="nav-link active" href="admin_page.php"><strong>Panel Admina</strong></a></li>
+                <?php endif; ?>
+                
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
-                    <p  style="font-weight: bold;margin-bottom: 0px;!important">Hello <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                    <li class="nav-item"><a class="nav-link active"><strong>Hello <?php echo htmlspecialchars($_SESSION['username']); ?></strong></a></li>
                     <a class="btn btn-primary shadow m-lg-2" role="button" href="../backend/logout.php">Wyloguj się</a>
                 <?php else: ?>
                     <a class="btn btn-primary shadow" role="button" href="signup.php">Logowanie</a>
                 <?php endif; ?>
+                </ul>
             </div>
         </div>
     </nav>

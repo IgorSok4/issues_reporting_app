@@ -20,6 +20,7 @@ if ($result->num_rows == 1) {
     if (password_verify($haslo, $uzytkownik['haslo'])) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $uzytkownik['login'];
+        $_SESSION['admin'] = $uzytkownik['rola'];
 
         header("Location: /issues_reporting_app/frontend/index.php");
         exit;

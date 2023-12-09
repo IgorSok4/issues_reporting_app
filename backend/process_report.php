@@ -10,10 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $oddzial = mysqli_real_escape_string($conn, $_POST['oddzial']);
     $idKategorii = isset($_POST['id_kategorii']) ? (int)$_POST['id_kategorii'] : null;
     $idUzytkownika = $_SESSION['user_id'];
+    $zakonczoe = 0;
 
-    $sql = "INSERT INTO zgloszenia (tytul, opis, piorytet, imie_nazwisko, oddzial, id_kategorii, id_uzytkownika) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO zgloszenia (tytul, opis, piorytet, imie_nazwisko, oddzial, id_kategorii, id_uzytkownika, zakonczone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssissii", $tytul, $opis, $piorytet, $imieNazwisko, $oddzial, $idKategorii, $idUzytkownika);
+    $stmt->bind_param("ssissiii", $tytul, $opis, $piorytet, $imieNazwisko, $oddzial, $idKategorii, $idUzytkownika, $zakonczone);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

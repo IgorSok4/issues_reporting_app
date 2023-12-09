@@ -5,10 +5,10 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 3;
 $offset = ($page - 1) * $limit;
 
-$sql = "SELECT zg.id, zg.tytul, zg.opis, zg.piorytet, zg.imie_nazwisko, zg.oddzial, kz.nazwa AS kategoria
+$sql = "SELECT zg.id, zg.tytul, zg.opis, zg.piorytet, zg.imie_nazwisko, zg.oddzial, zg.zakonczone, kz.nazwa AS kategoria
         FROM zgloszenia zg
         LEFT JOIN kategoria_zgloszenia kz ON zg.id_kategorii = kz.ID
-        ORDER BY zg.id DESC, zg.piorytet DESC
+        ORDER BY zg.zakonczone ASC, zg.id DESC
         LIMIT $limit OFFSET $offset";
 
 $result = $conn->query($sql);

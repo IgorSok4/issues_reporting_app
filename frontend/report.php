@@ -1,5 +1,5 @@
-<?php 
-include 'header.php'; 
+<?php
+include 'header.php';
 include '../backend/db.php';
 
 $kategorie = [];
@@ -83,6 +83,7 @@ if ($result && $result->num_rows > 0) {
                         <div class="mb-3"></div>
                     </div>
                 </div>
+                <input type="hidden" name="zakonczone" value=0>
                 <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Zapisz zgłoszenie</button></div>
             </form>
         </div>

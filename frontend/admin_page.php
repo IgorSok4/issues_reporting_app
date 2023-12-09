@@ -1,5 +1,8 @@
-<?php include 'header.php'; ?>
-<?php include '../backend/fetch_reports.php'; ?>
+<?php
+include 'header.php';
+include '../backend/fetch_reports.php';
+
+?>
     <header class="bg-dark">
         <div class="container pt-4 pt-xl-5">
             <div class="row pt-5">
@@ -19,7 +22,7 @@
             </div>
         </div>
     </header>
-    <div class="row justify-content-center" style="--bs-gutter-x: 0rem;">
+    <div class="row justify-content-center pt-4 pb-4" style="--bs-gutter-x: 0rem;">
         <div class="col-xl-10">
             <div class="card" style="background: rgba(0,0,0,0.125);">
                 <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3" style="background: #27262e;">
@@ -34,6 +37,7 @@
                                     <th style="background: rgb(255,255,255);border-width: 1px;border-color: #27262e;border-top-color: rgb(0,0,0);">Tytuł zgłoszenia</th>
                                     <th style="background: rgb(255,255,255);border-width: 1px;border-color: rgb(39,38,46);">Dział</th>
                                     <th style="background: rgb(255,255,255);border-width: 1px;border-color: var(--bs-table-bg);">Kategoria</th>
+                                    <th style="background: rgb(255,255,255);border-width: 1px;border-color: var(--bs-table-bg);">Piorytet</th>
                                     <th style="background: rgb(255,255,255);border-width: 1px;border-color: var(--bs-table-bg);">Wykonano</th>
                                     <th class="text-center" style="background: rgb(255,255,255);border-width: 1px;border-color: var(--bs-table-bg);">Sprawdź</th>
                                 </tr>
@@ -45,10 +49,15 @@
                                         <td class="text-truncate" style="max-width: 200px;background: rgb(255,255,255);"><?php echo htmlspecialchars($report['oddzial']); ?></td>
                                         <td style="background: rgb(255,255,255);"><?php echo htmlspecialchars($report['kategoria']); ?></td>
                                         <td style="background: rgb(255,255,255);"><?php echo $report['piorytet'] ? 'TAK' : 'NIE'; ?></td>
-                                        <td class="text-center" style="background: rgb(255,255,255);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye-fill fs-5 text-primary">
-                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
-                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
-                                            </svg></td>
+                                        <td style="background: rgb(255,255,255);"><?php echo $report['zakonczone'] ? 'TAK' : 'NIE'; ?></td>
+                                        <td class="text-center" style="background: rgb(255,255,255);">
+                                            <a href="admin_report_detail.php?id=<?php echo $report['id']; ?>">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye-fill fs-5 text-primary">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -69,4 +78,12 @@
             </div>
         </div>
     </div>
+<?php if (isset($_SESSION['report_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['report_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['report_status']);
+endif;
+?>
 <?php include 'footer.php'; ?>

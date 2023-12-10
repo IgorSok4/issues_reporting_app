@@ -2,6 +2,7 @@
 include 'header.php';
 include '../backend/report_detail.php';
 include '../backend/process_admin_report.php';
+include '../backend/fetch_admin_comments.php';
 
 ?>
     <header class="bg-dark pb-3 mb-3">
@@ -156,24 +157,67 @@ include '../backend/process_admin_report.php';
                 </div>
             </div>
             <input type="hidden" name="id" value="<?php echo $zgloszenie['id']; ?>">
-            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Edytuj zgłoszenie</button></div>
+            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Zapisz zmiany w zgłoszeniu</button></div>
+        </form>
+        <form action="/issues_reporting_app/backend/delete_admin_report.php" method="post" style="background-color: #2d2c38;">
+            <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
+            <div class="text-end mb-3"><button class="btn btn-danger btn-sm" type="submit">Usuń zgłoszenie</button></div>
         </form>
     </div>
     <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
         <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
-        <form method="post" action="/issues_reporting_app/backend/process_report.php">
+        <form method="post" action="/issues_reporting_app/backend/process_admin_comment.php">
             <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
                 <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
-                    <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Dodaj notatkę do zgłoszenia</span></p>
+                    <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Dodaj komentarz do zgłoszenia</span></p>
                 </div>
                 <div class="card-body" style="background: #2d2c38;">
+                    <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
+                    <input type="hidden" name="id_uzytkownika" value="<?php echo $_SESSION['user_id']; ?>">
                     <div class="mb-3">
-                        <label class="form-label" for="opis"><strong>Treść notatki</strong></label>
+                        <label class="form-label" for="opis"><strong>Treść komentarza</strong></label>
                         <textarea class="form-control" id="opis" name="opis" rows="4" required></textarea>
                     </div>
                 </div>
             </div>
-            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Dodaj notatkę</button></div>
+            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Dodaj komentarz</button></div>
         </form>
     </div>
+    <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
+        <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
+            <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
+                <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Komentarze</span></p>
+            </div>
+            <?php if (empty($komentarze)): ?>
+                <div class="card-body" style="background: #2d2c38;">
+                    <p class="text-center text-white">Brak komentarzy.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($komentarze as $komentarz): ?>
+                    <div class="card-body" style="background: #2d2c38;">
+                        <div class="mb-3">
+                            <label class="form-label" for="opis"><strong>Autor: <?php echo htmlspecialchars($komentarz['autor']); ?><br>
+                                                                        Data dodania: <?php echo $komentarz['data_dodania']; ?><br>
+                                                                        Treść komentarza:</strong></label>
+                            <p><?php echo htmlspecialchars($komentarz['tresc_komentarza']); ?></p>
+                        </div>
+                    </div>
+                    <form action="/issues_reporting_app/backend/delete_admin_comment.php" method="post" style="background-color: #2d2c38;">
+                        <input type="hidden" name="id_komentarza" value="<?php echo $komentarz['id']; ?>">
+                        <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
+                        <button type="submit" class="btn btn-danger btn-sm mx-xl-3 mb-3">Usuń</button>
+                    </form>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php if (isset($_SESSION['report_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['report_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['report_status']);
+endif;
+?>
 <?php include 'footer.php'; ?>

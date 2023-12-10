@@ -10,7 +10,7 @@ include '../backend/fetch_admin_comments.php';
             <div class="row pt-5">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto" style="margin-bottom: 63px;">
                     <div class="text-center">
-                        <p class="fw-bold text-success mb-2">SZCZEGÓŁY ZGŁOSZENIA</p>
+                        <p class="fw-bold text-success mb-2">SZCZEGÓŁY MOJEGO ZGŁOSZENIA</p>
                         <h2 class="fw-bold"><span style="background-color: rgba(0, 0, 0, 0.125);">Projekt PHP z MySQL</span><br><span style="background-color: rgba(0, 0, 0, 0.125);">System zgłaszania błędów</span></h2>
                     </div>
                 </div>
@@ -112,99 +112,6 @@ include '../backend/fetch_admin_comments.php';
     </div>
     <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
         <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
-        <form method="post" action="/issues_reporting_app/backend/process_admin_report.php">
-            <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
-                <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
-                    <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Edytuj zgłoszenie</span></p>
-                </div>
-                <div class="card-body" style="background: #2d2c38;">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-8">
-                            <div class="mb-3">
-                                <label class="form-label" for="tytul"><strong>Tytuł zgłoszenia</strong></label>
-                                <input class="form-control" type="text" id="tytul" name="tytul" value="<?php echo htmlspecialchars($zgloszenie['tytul']); ?>" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4">
-                            <div class="mb-3">
-                                <label class="form-label" for="id_kategorii"><strong>Kategoria zgłoszenia</strong></label>
-                                <select class="form-control" id="id_kategorii" name="id_kategorii" required>
-                                <option value="">Wybierz kategorię</option>
-                                <?php foreach($kategorie as $kategoria): ?>
-                                    <option value="<?php echo $kategoria['ID']; ?>"
-                                        <?php echo $kategoria['ID'] == $zgloszenie['id_kategorii'] ? 'selected' : ''; ?>>
-                                        <?php echo htmlspecialchars($kategoria['nazwa']); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="opis"><strong>Opis zgłoszenia</strong></label>
-                        <textarea class="form-control" id="opis" name="opis" rows="4" required><?php echo htmlspecialchars($zgloszenie['opis']); ?></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label"><strong>Zgłoszenie priorytetowe?</strong></label>
-                        <div class="form-check">
-                        <input class="form-check-input" type="radio" id="piorytet-1" name="piorytet" value="1" <?php echo $zgloszenie['piorytet'] == 1 ? 'checked' : ''; ?> required>
-                            <label class="form-check-label" for="piorytet-1">Tak</label>
-                        </div>
-                        <div class="form-check">
-                        <input class="form-check-input" type="radio" id="piorytet-0" name="piorytet" value="0" <?php echo $zgloszenie['piorytet'] == 0 ? 'checked' : ''; ?> required>
-                            <label class="form-check-label" for="piorytet-0">Nie</label>
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label" for="imie_nazwisko"><strong>Imię i nazwisko zgłaszającego</strong></label>
-                            <input class="form-control" id="imie_nazwisko" name="imie_nazwisko" value="<?php echo htmlspecialchars($zgloszenie['imie_nazwisko']); ?>" required>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label" for="oddzial"><strong>Oddział</strong></label>
-                            <input class="form-control" id="oddzial" name="oddzial" value="<?php echo htmlspecialchars($zgloszenie['oddzial']); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"><strong>Zgłoszenie zakończone</strong></label>
-                            <input class="form-check-input" type="checkbox" id="zakonczone" name="zakonczone" <?php echo $zgloszenie['zakonczone'] ? 'checked' : ''; ?>>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="mb-3"></div>
-                </div>
-            </div>
-            <input type="hidden" name="id" value="<?php echo $zgloszenie['id']; ?>">
-            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Zapisz zmiany w zgłoszeniu</button></div>
-        </form>
-        <form action="/issues_reporting_app/backend/delete_admin_report.php" method="post" style="background-color: #2d2c38;">
-            <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
-            <div class="text-end mb-3"><button class="btn btn-danger btn-sm" type="submit">Usuń zgłoszenie</button></div>
-        </form>
-    </div>
-    <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
-        <form method="post" action="/issues_reporting_app/backend/process_admin_comment.php">
-            <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
-                <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
-                    <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Dodaj komentarz do zgłoszenia</span></p>
-                </div>
-                <div class="card-body" style="background: #2d2c38;">
-                    <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
-                    <input type="hidden" name="id_uzytkownika" value="<?php echo $_SESSION['user_id']; ?>">
-                    <div class="mb-3">
-                        <label class="form-label" for="opis"><strong>Treść komentarza</strong></label>
-                        <textarea class="form-control" id="opis" name="opis" rows="4" required></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="text-end mb-3"><button class="btn btn-primary btn-lg" type="submit">Dodaj komentarz</button></div>
-        </form>
-    </div>
-    <div class="container-fluid" style="border-color: var(--bs-card-cap-bg);">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
         <div class="card shadow mb-3" style="border-color: var(--bs-card-cap-bg);">
             <div class="card-header py-3" style="background: rgb(45,44,56);border-color: var(--bs-card-cap-bg);">
                 <p class="text-primary m-0 fw-bold" style="color: var(--bs-body-color);"><span style="color: rgb(255, 255, 255);">Komentarze</span></p>
@@ -223,21 +130,8 @@ include '../backend/fetch_admin_comments.php';
                             <p><?php echo htmlspecialchars($komentarz['tresc_komentarza']); ?></p>
                         </div>
                     </div>
-                    <form action="/issues_reporting_app/backend/delete_admin_comment.php" method="post" style="background-color: #2d2c38;">
-                        <input type="hidden" name="id_komentarza" value="<?php echo $komentarz['id']; ?>">
-                        <input type="hidden" name="id_zgloszenia" value="<?php echo $zgloszenie['id']; ?>">
-                        <button type="submit" class="btn btn-danger btn-sm mx-xl-3 mb-3">Usuń</button>
-                    </form>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
     </div>
-<?php if (isset($_SESSION['report_status'])): ?>
-<script>
-    alert('<?php echo $_SESSION['report_status']; ?>');
-</script>
-<?php
-    unset($_SESSION['report_status']);
-endif;
-?>
 <?php include 'footer.php'; ?>

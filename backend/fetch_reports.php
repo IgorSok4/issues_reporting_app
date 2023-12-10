@@ -2,7 +2,7 @@
 include 'db.php';
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 3;
+$limit = 5;
 $offset = ($page - 1) * $limit;
 
 $sql = "SELECT zg.id, zg.tytul, zg.opis, zg.piorytet, zg.imie_nazwisko, zg.oddzial, zg.zakonczone, kz.nazwa AS kategoria

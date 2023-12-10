@@ -37,11 +37,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <li class="nav-item"><a class="nav-link active" href="index.php"><strong>Strona główna</strong></a></li>
                     <li class="nav-item"><a class="nav-link active" href="report.php"><strong>Dodaj zgłoszenie</strong></a></li>
                     <li class="nav-item"><a class="nav-link active" href="authors.php"><strong>Autorzy</strong></a></li>
-
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['admin'] == true): ?>
                     <li class="nav-item"><a class="nav-link active" href="admin_page.php"><strong>Panel Admina</strong></a></li>
+                <?php else: ?>
+                    <li class="nav-item"><a class="nav-link active" href="user_page.php"><strong>Panel Użytkownika</strong></a></li>
                 <?php endif; ?>
-
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
                     <li class="nav-item"><a class="nav-link active"><strong>Hello <?php echo htmlspecialchars($_SESSION['username']); ?></strong></a></li>
                     <a class="btn btn-primary shadow m-lg-2" role="button" href="../backend/logout.php">Wyloguj się</a>

@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: /issues_reporting_app/frontend/signup.php");
     exit;
 }
-// komunikat o statusie rejestracji
 if (isset($_SESSION['register_status'])): ?>
     <script>
         alert('<?php echo $_SESSION['register_status']; ?>');

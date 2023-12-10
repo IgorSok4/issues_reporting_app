@@ -22,5 +22,4 @@
     <script src="assets/js/Ludens---Create-Edit-Form-Ludens---Sleek-Image-Input-with-Preview.js"></script>
     <script src="assets/js/Ludens---Create-Edit-Form-theme.js"></script>
 </body>
-
 </html>

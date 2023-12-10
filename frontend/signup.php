@@ -56,4 +56,12 @@ if (isset($_GET['error'])) {
     unset($_SESSION['register_status']);
 endif;
 ?>
+<?php if (isset($_SESSION['login_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['login_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['login_status']);
+endif;
+?>
 <?php include 'footer.php'; ?>

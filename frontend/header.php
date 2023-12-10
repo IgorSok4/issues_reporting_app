@@ -31,7 +31,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 <body>
     <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="assets/img/brands/error-icon-25260.png" width="65" height="65"></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="report.php"><span><img src="assets/img/brands/error-icon-25260.png" width="65" height="65"></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.php"><strong>Strona główna</strong></a></li>

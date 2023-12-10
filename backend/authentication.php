@@ -23,15 +23,25 @@ if ($result->num_rows == 1) {
         $_SESSION['admin'] = $uzytkownik['rola'];
         $_SESSION['user_id'] = $uzytkownik['ID'];
 
+        $_SESSION['login_status'] = "Pomyślna autoryzacja użytkownika.";
         header("Location: /issues_reporting_app/frontend/index.php");
         exit;
     } else {
-        header("Location: signup.php?error=invalidpassword");
+        $_SESSION['login_status'] = "Wystąpił błąd podczas autoryzacji użytkownika.\nBłędne dane.";
+        header("Location: /issues_reporting_app/frontend/signup.php");
         exit;
     }
 } else {
-    header("Location: signup.php?error=nouser");
+    $_SESSION['login_status'] = "Wystąpił błąd podczas autoryzacji użytkownika.\nUżytkownik nie istnieje.";
+    header("Location: /issues_reporting_app/frontend/signup.php");
     exit;
 }
 
+if (isset($_SESSION['login_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['login_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['login_status']);
+endif;
 ?>

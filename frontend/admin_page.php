@@ -86,4 +86,12 @@ include '../backend/fetch_reports.php';
     unset($_SESSION['report_status']);
 endif;
 ?>
+<?php if (isset($_SESSION['update_status'])): ?>
+<script>
+    alert('<?php echo $_SESSION['update_status']; ?>');
+</script>
+<?php
+    unset($_SESSION['update_status']);
+endif;
+?>
 <?php include 'footer.php'; ?>

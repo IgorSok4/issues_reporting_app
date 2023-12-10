@@ -18,13 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        $_SESSION['report_status'] = "Zgłoszenie zostało zaktualizowane.";
+        $_SESSION['update_status'] = "Zgłoszenie zostało zaktualizowane.";
     } else {
-        $_SESSION['report_status'] = "Wystąpił błąd podczas aktualizowania zgłoszenia.";
+        $_SESSION['update_status'] = "Wystąpił błąd podczas aktualizowania zgłoszenia.";
     }
     $conn->close();
 
     header("Location: /issues_reporting_app/frontend/admin_page.php");
     exit;
 }
+
 ?>

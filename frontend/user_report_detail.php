@@ -1,7 +1,6 @@
 <?php
 include 'header.php';
 include '../backend/report_detail.php';
-include '../backend/process_admin_report.php';
 include '../backend/fetch_admin_comments.php';
 
 ?>

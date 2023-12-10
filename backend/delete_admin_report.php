@@ -4,7 +4,6 @@ include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_zgloszenia = $_POST['id_zgloszenia'];
-    echo($id_zgloszenia);
 
     $sql = "DELETE FROM zgloszenia WHERE id = ?";
     $stmt = $conn->prepare($sql);

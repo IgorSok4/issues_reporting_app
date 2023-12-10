@@ -11,10 +11,10 @@ $sql = "SELECT zg.id, zg.tytul, zg.opis, zg.piorytet, zg.imie_nazwisko, zg.oddzi
         LEFT JOIN kategoria_zgloszenia kz ON zg.id_kategorii = kz.ID
         WHERE zg.id_uzytkownika = ?
         ORDER BY zg.zakonczone ASC, zg.id DESC
-        LIMIT ? OFFSET ?";
+        LIMIT $limit OFFSET $offset";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("iii", $userId, $limit, $offset);
+$stmt->bind_param("i", $userId,);
 $stmt->execute();
 $result = $stmt->get_result();
 $reports = [];
